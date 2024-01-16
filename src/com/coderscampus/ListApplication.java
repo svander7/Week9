@@ -19,10 +19,26 @@ public class ListApplication {
 		Collections.sort(names, new Comparator<String>() {
 			@Override
 			public int compare(String o1, String o2) {
-				return 02.compareTo(01)
-				
+				return o2.compareTo(o1);
 			}
 		});
+		
+		// Example 1 of creating a lambda expression
+		Collections.sort(names, (o1, o2) -> o2.compareTo(o1));
+		
+		// Example 2, slightly more "wordy" way of creating a lambda expression
+		Collections.sort(names, (String o1, String o2) -> o2.compareTo(o1));
+		
+		// Example 3, even more "wordy" way of creating a lambda expression
+		// Not the same functionality, because we are doing some null checks.
+		Collections.sort(names, (String o1, String o2) -> {
+			if (o2 != null && o1 != null) {
+				return o2.compareTo(o1);
+			} else {
+				return 0;
+			}
+		}			
+	);
 		
 		printArrayListToConsole(names);
 		
